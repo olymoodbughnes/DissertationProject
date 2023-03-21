@@ -31,17 +31,7 @@ public class CLocation : MonoBehaviour
         //calculate height and width of latest block
        
         startRoom.setCLoc(cloc);
-        //startRoom.setLoc(startRef);
-        
 
-        
-
-        
-        /*start room location
-        
-
-        print("startref: " + startRef);
-        */
 
 
 
