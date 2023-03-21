@@ -23,7 +23,6 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayLV() {
         
-        //File.WriteAllText(Application.persistentDataPath + "/Lives.txt", 3.ToString()); ;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
         
