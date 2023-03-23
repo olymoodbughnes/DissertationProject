@@ -22,6 +22,10 @@ public class DisableDF : MonoBehaviour
     [SerializeField]
     ScoreKeeper sKeeper;
     private bool started = false;
+    
+    
+    //Once player passes through top door, disable the other doors.
+    
     private void Start()
     {
         rbDOWN = GameObject.FindGameObjectWithTag("DOWN").GetComponent<PlatformEffector2D>();
@@ -32,13 +36,15 @@ public class DisableDF : MonoBehaviour
 
         sKeeper = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreKeeper>();
     }
+    
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (gameObject.tag == "UP" && started == false)
-            
+        //Player passes through top door.
+        if (gameObject.tag == "UP" && started == false)      
         {
             sKeeper.path("Up");
+            //Disable other doors
             GameObject.FindGameObjectWithTag("DOWN").tag = "NotActive";
             rbDOWN.enabled = false;
             DOWNDoor.CloseDoor();
@@ -47,10 +53,7 @@ public class DisableDF : MonoBehaviour
             FRONTDoor.CloseDoor();
 
             started = true;
-
         }
-        
-
     }
 
     public void CloseDoor()
@@ -58,6 +61,5 @@ public class DisableDF : MonoBehaviour
         started = true;
         Instantiate(Door, transform.position + new Vector3(0.5f, -0.5f, 0), Quaternion.Euler(0, 0, 90));
         Instantiate(Door, transform.position + new Vector3(1.5f, -0.5f, 0), Quaternion.Euler(0, 0, 270));
-
     }
 }
