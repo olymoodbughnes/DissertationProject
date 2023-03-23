@@ -23,6 +23,9 @@ public class DisableUF : MonoBehaviour
     ScoreKeeper sKeeper;
 
     private bool started = false;
+    
+    //Once player passes through bottom door, disable the other doors.
+    
     private void Start()
     {
         rbUP = GameObject.FindGameObjectWithTag("UP").GetComponent<PlatformEffector2D>();
@@ -35,9 +38,11 @@ public class DisableUF : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Player passes through bottom door.
         if (gameObject.tag == "DOWN" && started == false)
         {
             sKeeper.path("Down");
+            //Disable other doors
             GameObject.FindGameObjectWithTag("UP").tag = "NotActive";
             rbUP.enabled = false;
             UPDoor.CloseDoor();
