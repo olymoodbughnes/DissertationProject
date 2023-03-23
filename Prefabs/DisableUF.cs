@@ -51,15 +51,12 @@ public class DisableUF : MonoBehaviour
             FRONTDoor.CloseDoor();
 
             started = true;
-        }
-      
+        }   
     }
 
     public void CloseDoor(){
         started = true;
         Instantiate(Door, transform.position + new Vector3(-0.5f, 0.5f, 0), Quaternion.Euler(0, 0, 270));
         Instantiate(Door, transform.position + new Vector3(-1.5f, 0.5f, 0), Quaternion.Euler(0, 0, 90));
-
-
     }
 }
