@@ -24,6 +24,8 @@ public class DisableUD : MonoBehaviour
 
     private bool started = false;
 
+    //Once player passes through front door, disable the other doors.
+
     private void Start()
     {
         rbUP = GameObject.FindGameObjectWithTag("UP").GetComponent<PlatformEffector2D>();
@@ -36,9 +38,11 @@ public class DisableUD : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Player passes through front door.
         if (gameObject.tag == "FRONT" && started == false)
         {
             sKeeper.path("Mid");
+            //Disable other doors
             GameObject.FindGameObjectWithTag("UP").tag = "NotActive";
             rbUP.enabled = false;
             UPDoor.CloseDoor();
@@ -48,16 +52,12 @@ public class DisableUD : MonoBehaviour
             DOWNDoor.CloseDoor();
             started = true;
         }
-        
-        
-
     }
 
     public void CloseDoor()
     {
         started = true;
         Instantiate(Door, transform.position + new Vector3(-0.5f, -0.5f, 0), Quaternion.Euler(0, 0, 0));
-
         Instantiate(Door, transform.position + new Vector3(-0.5f, -1.5f, 0), Quaternion.Euler(0, 0, 180));
     }
 }
