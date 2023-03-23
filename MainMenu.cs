@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        //Find and read current game settings in the specified path. 
         TextWriter tw = new StreamWriter(Application.persistentDataPath + "/Lives.txt");
         tw.Write("3");
         tw.Close();
@@ -19,17 +20,17 @@ public class MainMenu : MonoBehaviour
         TextWriter tw3 = new StreamWriter(Application.persistentDataPath + "/ScoreTracker.txt");
         tw3.Write("0");
         tw3.Close();
-
     }
+    
+    
     public void PlayLV() {
-        
+        //Game level identifier   
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
         
     }
-    public void QuitGame() {
-
-        Application.Quit();
     
+    public void QuitGame() {       
+        Application.Quit();
     }
 }
