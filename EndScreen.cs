@@ -16,6 +16,8 @@ public class EndScreen : MonoBehaviour
 
     private void Start()
     {
+        //End screen score fanfare, higher score = higher praise
+    
         Score = File.ReadAllText(Application.persistentDataPath + "/ScoreTracker.txt");
 
         if (System.Int32.Parse(Score) <= 5000)
@@ -37,18 +39,17 @@ public class EndScreen : MonoBehaviour
 
         ScoreText.text ="YOUR FINAL SCORE IS: " + Score + " " + "\n" + message;
     }
+    
     public void LoadMainMenu() {
              
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-          
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -2);
 
         }
 
     public void ClearLastRun() {
-       
-        
-
+ 
         File.WriteAllText(Application.persistentDataPath + "/ScoreTracker.txt", 0.ToString());
 
     }
