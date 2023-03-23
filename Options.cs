@@ -4,7 +4,9 @@ using UnityEngine;
 using System.IO;
 public class Options : MonoBehaviour
 {
-    
+  
+  //Difficulty settings (access difficulty text file, clear any remaining text, write desired difficulty as a string)
+  
   public void setDiffHard()
     {
 
